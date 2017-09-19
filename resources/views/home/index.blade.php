@@ -8,10 +8,10 @@
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                        Welcome to My First Desktop
+                        Welcome to My First Desktop Remote Testing 1
                     </h1>
                     <small>
-                        It is an application skeleton for our moneitoring app
+                        It is an application skeleton for our moneitoring app Testing
                     </small>
 					
                 </div>
@@ -329,17 +329,15 @@
 
 
             $.ajax({
-                url: 'http://localhost:7000/basic/',
-                crossDomain: true,
-                dataType: 'jsonp',
+                url: '/liveweather',
+                dataType: 'json',
                 success: function(data) {
-
-                    json_data = data.json_data;
-                    json_data = JSON.parse(json_data);
-                    var tmp_arr = Object.values(json_data.Temperature);
-                    var hum_arr = Object.values(json_data.Humidity);
-                    var wnd_arr = Object.values(json_data.Wind);
-                    var sol_arr = Object.values(json_data.Solar);
+                    console.log(data);
+                    json_data = data;
+                    var tmp_arr = Object.values(json_data.TEMPERATURE);
+                    var hum_arr = Object.values(json_data.HUMADITY);
+                    var wnd_arr = Object.values(json_data.WIND);
+                    var sol_arr = Object.values(json_data.SOLAR);
                     console.log(tmp_arr);
                     console.log(Math.max.apply(Math, tmp_arr));
                     $("#tmp_avg").html(Math.max.apply(Math, tmp_arr));

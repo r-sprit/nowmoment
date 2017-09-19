@@ -14,7 +14,5 @@
 Route::get('/', 'HomeController@index')->name("main");
 Route::get('/minor', 'HomeController@minor')->name("minor");
 
-Route::get('breweries', ['middleware' => 'cors', function()
-{
-    return \Response::json(\App\Brewery::with('beers', 'geocode')->paginate(10), 200);
-}]);
+Route::get('/datapoints', 'HomeController@datapoints')->name("datapoints");
+Route::get("/liveweather", "WeatherDataController@getLatestData")->name("liveweather");
