@@ -3770,3 +3770,27 @@ Stack trace:
 [2017-09-15 14:58:20] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\RedirectResponse' not found' in I:\mywebapps\iotmonitoring\app\Http\Controllers\HomeController.php:20
 Stack trace:
 #0 {main}  
+[2017-09-20 04:45:42] production.ERROR: exception 'Symfony\Component\Console\Exception\CommandNotFoundException' with message 'Command "routes" is not defined.
+
+Did you mean one of these?
+    route:list
+    route:clear
+    route:cache' in D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('routes')
+#1 D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 D:\Projects\IoTProject\mywebapps\iotweb\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(121): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 D:\Projects\IoTProject\mywebapps\iotweb\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-09-20 04:45:44] production.ERROR: exception 'Symfony\Component\Console\Exception\CommandNotFoundException' with message 'Command "routes" is not defined.
+
+Did you mean one of these?
+    route:list
+    route:clear
+    route:cache' in D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('routes')
+#1 D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 D:\Projects\IoTProject\mywebapps\iotweb\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(121): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 D:\Projects\IoTProject\mywebapps\iotweb\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  

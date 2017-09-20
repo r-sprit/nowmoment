@@ -19,4 +19,6 @@ Route::get("/liveweather", "WeatherDataController@getLatestData")->name("livewea
 
 Auth::routes();
 
+$this->get('logout', 'Auth\LoginController@logout');
+
 Route::get('/home', 'HomeController@index');
