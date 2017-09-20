@@ -444,7 +444,7 @@
       <workItem from="1505403392973" duration="4357000" />
       <workItem from="1505486132405" duration="8937000" />
       <workItem from="1505525720465" duration="1635000" />
-      <workItem from="1505784358724" duration="21523000" />
+      <workItem from="1505784358724" duration="21538000" />
     </task>
     <task id="LOCAL-00001" summary="AT the end of today">
       <created>1505806237691</created>
@@ -460,11 +460,18 @@
       <option name="project" value="LOCAL" />
       <updated>1505881194088</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="AT the end of login adition without template">
+      <created>1505881878940</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1505881878940</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37902000" />
+    <option name="totallyTimeSpent" value="37917000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
