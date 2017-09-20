@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0786a8d1-b117-4889-a45d-9bfc731b2f3f" name="SKT Server" url="http://210.114.91.91:25770">
+        <fileTransfer host="210.114.91.91" port="25268" rootFolder="/home/devuser/iotwebapp/iotweb" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="25268" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
