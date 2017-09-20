@@ -340,10 +340,10 @@
                     var sol_arr = Object.values(json_data.SOLAR);
                     console.log(tmp_arr);
                     console.log(Math.max.apply(Math, tmp_arr));
-                    $("#tmp_avg").html(Math.max.apply(Math, tmp_arr));
-                    $("#hum_avg").html(Math.max.apply(Math, hum_arr));
-                    $("#sol_avg").html(Math.max.apply(Math, sol_arr));
-                    $("#wnd_avg").html(Math.max.apply(Math, wnd_arr));
+                    $("#tmp_avg").html(tmp_arr[0]);
+                    $("#hum_avg").html(hum_arr[0]);
+                    $("#sol_avg").html(sol_arr[0]);
+                    $("#wnd_avg").html(wnd_arr[0]);
 
                     sparklineCharts(tmp_arr, hum_arr, wnd_arr, sol_arr);
 

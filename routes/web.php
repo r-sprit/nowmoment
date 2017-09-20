@@ -16,3 +16,7 @@ Route::get('/minor', 'HomeController@minor')->name("minor");
 
 Route::get('/datapoints', 'HomeController@datapoints')->name("datapoints");
 Route::get("/liveweather", "WeatherDataController@getLatestData")->name("liveweather");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

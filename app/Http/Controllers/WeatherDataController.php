@@ -22,7 +22,7 @@ class WeatherDataController extends Controller
             ->select(DB::raw($sql_expr))
             ->groupby('RECORD_DATE', 'SENSOR_ID')
             ->orderBy('ID', 'desc')
-            ->take(10)->get();
+            ->take(60)->get();
 
         $output_coll = collect([
             "SENSOR_ID" => $live_weather_data->pluck("SENSOR_ID"),
