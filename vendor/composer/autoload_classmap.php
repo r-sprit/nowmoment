@@ -503,7 +503,10 @@ return array(
     'Faker\\Provider\\uk_UA\\Internet' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Internet.php',
     'Faker\\Provider\\uk_UA\\Person' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Person.php',
     'Faker\\Provider\\uk_UA\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/PhoneNumber.php',
+<<<<<<< HEAD
     'Faker\\Provider\\uk_UA\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Text.php',
+=======
+>>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
     'Faker\\Provider\\uk_Ua\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Payment.php',
     'Faker\\Provider\\vi_VN\\Address' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/vi_VN/Address.php',
     'Faker\\Provider\\vi_VN\\Color' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/vi_VN/Color.php',
@@ -2970,12 +2973,20 @@ return array(
     'phpDocumentor\\Reflection\\Types\\Float_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Float_.php',
     'phpDocumentor\\Reflection\\Types\\Integer' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Integer.php',
     'phpDocumentor\\Reflection\\Types\\Iterable_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Iterable_.php',
+<<<<<<< HEAD
     'phpDocumentor\\Reflection\\Types\\Mixed_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Mixed_.php',
+=======
+    'phpDocumentor\\Reflection\\Types\\Mixed' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Mixed.php',
+>>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
     'phpDocumentor\\Reflection\\Types\\Null_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Null_.php',
     'phpDocumentor\\Reflection\\Types\\Nullable' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Nullable.php',
     'phpDocumentor\\Reflection\\Types\\Object_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Object_.php',
     'phpDocumentor\\Reflection\\Types\\Parent_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Parent_.php',
+<<<<<<< HEAD
     'phpDocumentor\\Reflection\\Types\\Resource_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Resource_.php',
+=======
+    'phpDocumentor\\Reflection\\Types\\Resource' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Resource.php',
+>>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
     'phpDocumentor\\Reflection\\Types\\Scalar' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Scalar.php',
     'phpDocumentor\\Reflection\\Types\\Self_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Self_.php',
     'phpDocumentor\\Reflection\\Types\\Static_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Static_.php',

@@ -1,26 +1,20 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'My First App'); ?>
 
-@section('title', 'My First App')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                       How are you feeling in current weather?
-                        <a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-frown-o" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-bus" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
+                        Welcome to My First Desktop Remote Testing 1
                     </h1>
-
+                    <small>
+                        It is an application skeleton for our moneitoring app Testing
+                    </small>
 					
                 </div>
             </div>
-
         </div>
-
 	</div>
 	<div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -72,7 +66,7 @@
                     <div class="ibox-content">
                         <h1 class="no-margins" id="sol_avg">Loading</h1>
                         <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
-                        <small>10 Hours Average</small>
+                        <s<small>10 Hours Average</small>
                     </div>
                 </div>
             </div>
@@ -112,10 +106,6 @@
                     </div>
                 </div>
 
-        <div class="row text-right">
-            <h2>Last Updated ... <span id="last_updated_time"></span></h2>
-        </div>
-
 	</div>
     <div class="wrapper wrapper-content">
         <div class="row animated fadeInDown">
@@ -144,11 +134,14 @@
                     <div class="ibox-content">
                         <div id='external-events'>
                             <p>Drag a event and drop into callendar.</p>
-                            <div class='external-event navy-bg'>Shpping.</div>
-                            <div class='external-event navy-bg'>Walking</div>
-                            <div class='external-event navy-bg'>Long Drive</div>
-                            <div class='external-event navy-bg'>Outing</div>
-                            <div class='external-event navy-bg'>Picnic</div>
+                            <div class='external-event navy-bg'>Go to shop and buy some products.</div>
+                            <div class='external-event navy-bg'>Check the new CI from Corporation.</div>
+                            <div class='external-event navy-bg'>Send documents to John.</div>
+                            <div class='external-event navy-bg'>Phone to Sandra.</div>
+                            <div class='external-event navy-bg'>Chat with Michael.</div>
+                            <p class="m-t">
+                                <input type='checkbox' id='drop-remove' class="i-checks" checked /> <label for='drop-remove'>remove after drop</label>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -184,16 +177,9 @@
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
-
-    <style>
-
-        .fc td, .fc th {
-            padding: 5px 10px !important;
-            vertical-align: top; }
-    </style>
+<?php $__env->startSection('scripts'); ?>
     <script>
 
         $(document).ready(function() {
@@ -242,15 +228,13 @@
                 },
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar
-                drop: function( date ) {
-                    alert($(this).text() + date.toString());
+                drop: function() {
                     // is the "remove after drop" checkbox checked?
-
+                    if ($('#drop-remove').is(':checked')) {
+                        // if so, remove the element from the "Draggable Events" list
+                        $(this).remove();
+                    }
                 },
-                height:500,
-                dayRender: function(date, cell) {
-                    cell.append('<span class="p-3"><i class="fa fa-smile-o fa-lg p-3" aria-hidden="true"></i></span>');
-                } /* ,
                 events: [
                     {
                         title: 'All Day Event',
@@ -296,7 +280,7 @@
                         end: new Date(y, m, 29),
                         url: 'http://google.com/'
                     }
-                ] */
+                ]
             });
 			
 			
@@ -341,25 +325,7 @@
 					sparkResize = setTimeout(sparklineCharts, 500);
 				});
 
-                    function update_weather_data() {
-                        $.ajax({
-                            url: '/liveweather',
-                            dataType: 'json',
-                            success: function (data) {
-                                console.log(data);
-                                json_data = data;
-                                var tmp_arr = Object.values(json_data.TEMPERATURE.reverse());
-                                var hum_arr = Object.values(json_data.HUMADITY.reverse());
-                                var wnd_arr = Object.values(json_data.WIND.reverse());
-                                var sol_arr = Object.values(json_data.SOLAR.reverse());
-                                $("#tmp_avg").html(tmp_arr[0]);
-                                $("#hum_avg").html(hum_arr[0]);
-                                $("#sol_avg").html(sol_arr[0]);
-                                $("#wnd_avg").html(wnd_arr[0]);
-                                $("#last_updated_time").html(json_data.RECORD_DATE[0]);
-                                sparklineCharts(tmp_arr, hum_arr, wnd_arr, sol_arr);
 
-<<<<<<< HEAD
             $.ajax({
                 url: '/liveweather',
                 dataType: 'json',
@@ -372,30 +338,23 @@
                     var sol_arr = Object.values(json_data.SOLAR);
                     console.log(tmp_arr);
                     console.log(Math.max.apply(Math, tmp_arr));
-                    $("#tmp_avg").html(tmp_arr[0]);
-                    $("#hum_avg").html(hum_arr[0]);
-                    $("#sol_avg").html(sol_arr[0]);
-                    $("#wnd_avg").html(wnd_arr[0]);
-                    $("#last_updated_time").html(json_data.RECORD_DATE[0]);
+                    $("#tmp_avg").html(Math.max.apply(Math, tmp_arr));
+                    $("#hum_avg").html(Math.max.apply(Math, hum_arr));
+                    $("#sol_avg").html(Math.max.apply(Math, sol_arr));
+                    $("#wnd_avg").html(Math.max.apply(Math, wnd_arr));
+
                     sparklineCharts(tmp_arr, hum_arr, wnd_arr, sol_arr);
 
                 }
             });
-=======
-                            }
 
-                        });
-                    }
-
-            update_weather_data();
->>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
-
-            setInterval(update_weather_data, 60000);
 				//sparklineCharts();
 
         });
 		
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

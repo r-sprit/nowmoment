@@ -37,9 +37,15 @@ final class TypeResolver
         'float' => Types\Float_::class,
         'double' => Types\Float_::class,
         'object' => Object_::class,
+<<<<<<< HEAD
         'mixed' => Types\Mixed_::class,
         'array' => Array_::class,
         'resource' => Types\Resource_::class,
+=======
+        'mixed' => Types\Mixed::class,
+        'array' => Array_::class,
+        'resource' => Types\Resource::class,
+>>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
         'void' => Types\Void_::class,
         'null' => Types\Null_::class,
         'scalar' => Types\Scalar::class,

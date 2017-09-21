@@ -12,7 +12,11 @@
     "require": {
         "php": "^7.0",
         "phpdocumentor/reflection-common": "^1.0@dev",
+<<<<<<< HEAD
         "phpdocumentor/type-resolver": "^0.4.0",
+=======
+        "phpdocumentor/type-resolver": "^0.3.0",
+>>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
         "webmozart/assert": "^1.0"
     },
     "autoload": {

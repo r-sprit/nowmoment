@@ -3770,6 +3770,7 @@ Stack trace:
 [2017-09-15 14:58:20] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\RedirectResponse' not found' in I:\mywebapps\iotmonitoring\app\Http\Controllers\HomeController.php:20
 Stack trace:
 #0 {main}  
+<<<<<<< HEAD
 [2017-09-20 02:17:54] production.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Cannot declare class EntrustSetupTables, because the name is already in use in /home/devuser/iotwebapp/iotweb/database/migrations/2017_09_20_021707_entrust_setup_tables.php:71
 Stack trace:
 #0 {main}  
@@ -4228,3 +4229,29 @@ Stack trace:
 #43 /home/devuser/iotwebapp/iotweb/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #44 /home/devuser/iotwebapp/iotweb/server.php(21): require_once('/home/devuser/i...')
 #45 {main}  
+=======
+[2017-09-20 04:45:42] production.ERROR: exception 'Symfony\Component\Console\Exception\CommandNotFoundException' with message 'Command "routes" is not defined.
+
+Did you mean one of these?
+    route:list
+    route:clear
+    route:cache' in D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('routes')
+#1 D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 D:\Projects\IoTProject\mywebapps\iotweb\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(121): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 D:\Projects\IoTProject\mywebapps\iotweb\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-09-20 04:45:44] production.ERROR: exception 'Symfony\Component\Console\Exception\CommandNotFoundException' with message 'Command "routes" is not defined.
+
+Did you mean one of these?
+    route:list
+    route:clear
+    route:cache' in D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('routes')
+#1 D:\Projects\IoTProject\mywebapps\iotweb\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 D:\Projects\IoTProject\mywebapps\iotweb\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(121): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 D:\Projects\IoTProject\mywebapps\iotweb\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+>>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4

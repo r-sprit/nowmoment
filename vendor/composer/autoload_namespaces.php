@@ -10,4 +10,8 @@ return array(
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
+<<<<<<< HEAD
+=======
+    'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
+>>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
 );

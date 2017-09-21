@@ -119,6 +119,7 @@ class PHP_Token_ClassTest extends TestCase
 
         $this->assertEmpty($ts->getFunctions());
         $this->assertCount(1, $ts->getClasses());
+<<<<<<< HEAD
     }
 
     /**
@@ -149,5 +150,7 @@ class PHP_Token_ClassTest extends TestCase
 
         $this->assertArrayHasKey('class_with_method_named_empty', $classes);
         $this->assertArrayHasKey('empty', $classes['class_with_method_named_empty']['methods']);
+=======
+>>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
     }
 }
