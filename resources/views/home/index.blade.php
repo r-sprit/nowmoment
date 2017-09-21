@@ -144,14 +144,11 @@
                     <div class="ibox-content">
                         <div id='external-events'>
                             <p>Drag a event and drop into callendar.</p>
-                            <div class='external-event navy-bg'>Go to shop and buy some products.</div>
-                            <div class='external-event navy-bg'>Check the new CI from Corporation.</div>
-                            <div class='external-event navy-bg'>Send documents to John.</div>
-                            <div class='external-event navy-bg'>Phone to Sandra.</div>
-                            <div class='external-event navy-bg'>Chat with Michael.</div>
-                            <p class="m-t">
-                                <input type='checkbox' id='drop-remove' class="i-checks" checked /> <label for='drop-remove'>remove after drop</label>
-                            </p>
+                            <div class='external-event navy-bg'>Shpping.</div>
+                            <div class='external-event navy-bg'>Walking</div>
+                            <div class='external-event navy-bg'>Long Drive</div>
+                            <div class='external-event navy-bg'>Outing</div>
+                            <div class='external-event navy-bg'>Picnic</div>
                         </div>
                     </div>
                 </div>
@@ -190,6 +187,13 @@
 @endsection
 
 @section('scripts')
+
+    <style>
+
+        .fc td, .fc th {
+            padding: 5px 10px !important;
+            vertical-align: top; }
+    </style>
     <script>
 
         $(document).ready(function() {
@@ -245,6 +249,10 @@
                         $(this).remove();
                     }
                 },
+                height:500,
+                dayRender: function(date, cell) {
+                    cell.append('<span class="p-3"><i class="fa fa-smile-o fa-lg p-3" aria-hidden="true"></i></span>');
+                } /* ,
                 events: [
                     {
                         title: 'All Day Event',
@@ -290,7 +298,7 @@
                         end: new Date(y, m, 29),
                         url: 'http://google.com/'
                     }
-                ]
+                ] */
             });
 			
 			
