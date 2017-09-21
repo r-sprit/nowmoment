@@ -72,7 +72,7 @@
                     <div class="ibox-content">
                         <h1 class="no-margins" id="sol_avg">Loading</h1>
                         <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
-                        <s<small>10 Hours Average</small>
+                        <small>10 Hours Average</small>
                     </div>
                 </div>
             </div>
@@ -336,7 +336,6 @@
 				});
 
                     function update_weather_data() {
-                        //Testing Ajax
                         $.ajax({
                             url: '/liveweather',
                             dataType: 'json',
