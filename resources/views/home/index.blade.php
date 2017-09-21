@@ -242,12 +242,10 @@
                 },
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar
-                drop: function() {
+                drop: function( date ) {
+                    alert($(this).text() + date.toString());
                     // is the "remove after drop" checkbox checked?
-                    if ($('#drop-remove').is(':checked')) {
-                        // if so, remove the element from the "Draggable Events" list
-                        $(this).remove();
-                    }
+
                 },
                 height:500,
                 dayRender: function(date, cell) {
