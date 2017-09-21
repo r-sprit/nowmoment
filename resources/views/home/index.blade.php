@@ -336,6 +336,7 @@
 				});
 
                     function update_weather_data() {
+                        //Testing Ajax
                         $.ajax({
                             url: '/liveweather',
                             dataType: 'json',
