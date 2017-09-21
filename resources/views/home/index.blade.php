@@ -183,7 +183,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('scripts')
@@ -243,14 +242,29 @@
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar
                 drop: function( date ) {
-                    alert($(this).text() + date.toString());
+                    input_data = {
+                        event_date: moment(date).format('YYYY-MM-DD'),
+                        event_text: $(this).text(),
+                        _token: "{{ csrf_token() }}"
+                    };
+
+                    $.ajax({
+                        url: '/addevent',
+                        type: 'get',
+                        data: input_data,
+                        success: function (data) {
+                            alert(data);
+                        }
+                    });
+
                     // is the "remove after drop" checkbox checked?
 
                 },
                 height:500,
                 dayRender: function(date, cell) {
                     cell.append('<span class="p-3"><i class="fa fa-smile-o fa-lg p-3" aria-hidden="true"></i></span>');
-                } /* ,
+                },
+                events: '/getevents' /* ,
                 events: [
                     {
                         title: 'All Day Event',
@@ -359,7 +373,6 @@
                                 $("#last_updated_time").html(json_data.RECORD_DATE[0]);
                                 sparklineCharts(tmp_arr, hum_arr, wnd_arr, sol_arr);
 
-<<<<<<< HEAD
             $.ajax({
                 url: '/liveweather',
                 dataType: 'json',
@@ -381,14 +394,13 @@
 
                 }
             });
-=======
+
                             }
 
                         });
                     }
 
             update_weather_data();
->>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
 
             setInterval(update_weather_data, 60000);
 				//sparklineCharts();
