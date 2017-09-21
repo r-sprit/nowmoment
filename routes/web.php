@@ -16,3 +16,9 @@ Route::get('/minor', 'HomeController@minor')->name("minor");
 
 Route::get('/datapoints', 'HomeController@datapoints')->name("datapoints");
 Route::get("/liveweather", "WeatherDataController@getLatestData")->name("liveweather");
+
+Auth::routes();
+
+$this->get('logout', 'Auth\LoginController@logout');
+
+Route::get('/home', 'HomeController@index');

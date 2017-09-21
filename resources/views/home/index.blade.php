@@ -8,15 +8,19 @@
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                        Welcome to My First Desktop Remote Testing 1
+                       How are you feeling in current weather?
+                        <a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-frown-o" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-bus" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
                     </h1>
-                    <small>
-                        It is an application skeleton for our moneitoring app Testing
-                    </small>
+
 					
                 </div>
             </div>
+
         </div>
+
 	</div>
 	<div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -107,6 +111,10 @@
                         </div>
                     </div>
                 </div>
+
+        <div class="row text-right">
+            <h2>Last Updated ... <span id="last_updated_time"></span></h2>
+        </div>
 
 	</div>
     <div class="wrapper wrapper-content">
@@ -340,11 +348,11 @@
                     var sol_arr = Object.values(json_data.SOLAR);
                     console.log(tmp_arr);
                     console.log(Math.max.apply(Math, tmp_arr));
-                    $("#tmp_avg").html(Math.max.apply(Math, tmp_arr));
-                    $("#hum_avg").html(Math.max.apply(Math, hum_arr));
-                    $("#sol_avg").html(Math.max.apply(Math, sol_arr));
-                    $("#wnd_avg").html(Math.max.apply(Math, wnd_arr));
-
+                    $("#tmp_avg").html(tmp_arr[0]);
+                    $("#hum_avg").html(hum_arr[0]);
+                    $("#sol_avg").html(sol_arr[0]);
+                    $("#wnd_avg").html(wnd_arr[0]);
+                    $("#last_updated_time").html(json_data.RECORD_DATE[0]);
                     sparklineCharts(tmp_arr, hum_arr, wnd_arr, sol_arr);
 
                 }
