@@ -17,10 +17,40 @@
                 </div>
             </li>
             <li class="{{ isActiveRoute('main') }}">
-                <a href="{{ url('/') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>
+                <a href="{{ url('/') }}"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Location-Based Condition Prediction</span></a>
             </li>
             <li class="{{ isActiveRoute('minor') }}">
-                <a href="{{ url('/minor') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
+                <a href="{{ url('/minor') }}"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Aduino Board Modules</span> </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Fine Dust (API)</span> </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Android)-Aduino Communication</span> </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label"> Health facility for chronic disease</span> </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label"> Security/Safety facility</span> </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label"> Location-Based Social News</span> </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label"> SNS keyword based crawling</span> </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label"> Social Data Analysis  </span> </a>
             </li>
         </ul>
 

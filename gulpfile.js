@@ -20,9 +20,9 @@ mix.styles([
     'resources/assets/vendor/font-awesome/css/font-awesome.css',
     'resources/assets/css/plugins/iCheck/custom.css',
     'resources/assets/css/plugins/fullcalendar/fullcalendar.css',
-
+    'resources/assets/css/plugins/dataTables/datatables.min.css',
 	'resources/assets/vendor/animate/animate.css',
-	'resources/assets/vendor/animate/style.css',
+	//'resources/assets/vendor/animate/style.css',
     'resources/assests/vendor/'
 ], 'public/css/vendor.css', './');
 mix.scripts([
@@ -36,8 +36,8 @@ mix.scripts([
     'resources/assets/js/plugins/jquery-ui/jquery-ui.min.js',
     'resources/assets/js/plugins/iCheck/icheck.min.js',
     'resources/assets/js/plugins/fullcalendar/fullcalendar.min.js',
-	'resources/assets/js/plugins/sparkline/jquery.sparkline.min.js', 
-	
+	'resources/assets/js/plugins/sparkline/jquery.sparkline.min.js',
+    'resources/assets/js/plugins/dataTables/datatables.min.js',
 ], 'public/js/app.js', './');
 
 });
