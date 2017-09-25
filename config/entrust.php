@@ -19,11 +19,8 @@ return [
     | the role if it is in a different namespace.
     |
     */
-<<<<<<< HEAD
     'role' => 'Larashop\Models\Role',
-=======
     'role' => 'App\Role',
->>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
 
     /*
     |--------------------------------------------------------------------------
@@ -69,11 +66,8 @@ return [
     | Update the permission if it is in a different namespace.
     |
     */
-<<<<<<< HEAD
     'permission' => 'Larashop\Models\Permission',
-=======
     'permission' => 'App\Permission',
->>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
 
     /*
     |--------------------------------------------------------------------------
@@ -108,8 +102,6 @@ return [
     */
     'role_user_table' => 'role_user',
 
-<<<<<<< HEAD
-=======
     /*
     |--------------------------------------------------------------------------
     | User Foreign key on Entrust's role_user Table (Pivot)
@@ -123,6 +115,5 @@ return [
     |--------------------------------------------------------------------------
     */
     'role_foreign_key' => 'role_id',
->>>>>>> c3b16adbc4a35f00d03da1bf03eb4697a32929d4
 
 ];
