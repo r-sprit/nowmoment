@@ -19,6 +19,7 @@ Route::get("/liveweather", "WeatherDataController@getLatestData")->name("livewea
 Route::post("/addevent", "EventController@add")->name("addevent");
 Route::get("/addevent", "EventController@add");
 Route::get("/getevents", "EventController@get")->name("getevents");
+Route::get("/healthfacilities", "HomeController@healthfacilities");
 Auth::routes();
 
 $this->get('logout', 'Auth\LoginController@logout');

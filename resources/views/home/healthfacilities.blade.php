@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                        Camping in the Gyeonggi Province of Kora
+                        Health facility for chronic disease
                     </h1>
                     <div id="results"></div>
                     <div class="ibox-content">
@@ -18,11 +18,12 @@
                            class="table table-striped table-bordered table-hover" width="98%">
                         <thead>
                         <tr>
-                            <th>CONVNCE_FACLT_INFO</th>
-                            <th>DATA_STD_DE</th>
+                            <th>SIGUN_NM</th>
                             <th>FACLT_NM</th>
-                            <th>REFINE_LOTNO_ADDR</th>
-                            <th>MANAGE_INST_TELNO</th>
+                            <th>FACLT_DIV_NM</th>
+                            <th>REFINE_ROADNM_ADDR</th>
+                            <th>DOCTER_CNT</th>
+                            <th>NURSE_CNT</th>
                         </tr>
                         </thead>
                     </table>
@@ -47,11 +48,12 @@
                     dom: '<"html5buttons"B>lTfgitp',
                     aaData : outdata,
                     aoColumns : [
-                        { "mDataProp": "CONVNCE_FACLT_INFO" },
-                        { "mDataProp": "DATA_STD_DE" },
+                        { "mDataProp": "SIGUN_NM" },
                         { "mDataProp": "FACLT_NM" },
-                        { "mDataProp": "REFINE_LOTNO_ADDR" },
-                        { "mDataProp": "MANAGE_INST_TELNO" }
+                        { "mDataProp": "FACLT_DIV_NM" },
+                        { "mDataProp": "REFINE_ROADNM_ADDR" },
+                        { "mDataProp": "DOCTER_CNT" },
+                        { "mDataProp": "NURSE_CNT" }
                     ],
                     buttons: [
                         {extend: 'copy'},
@@ -74,11 +76,12 @@
 
                 });
             }
-            url = "http://openapi.gg.go.kr/CAMPGRD?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json";
+            url = "http://openapi.gg.go.kr/HEALTHENHNCCENTER?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json";
             $.get( url, function( data ) {
                 $( "#results" ).html( data );
-                outdata = data.CAMPGRD[1].row;
-                console.log(data.CAMPGRD[1]);
+                console.log(data);
+                outdata = data.HEALTHENHNCCENTER[1].row;
+                console.log(data.HEALTHENHNCCENTER[1]);
                 createDataTable(outdata);
             }, "json" );
 

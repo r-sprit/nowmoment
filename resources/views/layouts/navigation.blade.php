@@ -30,10 +30,18 @@
             </li>
             <li>
                 <a href="#"><i class="fa fa-th-large"></i>
-                    <span class="nav-label">Android)-Aduino Communication</span> </a>
+                    <span class="nav-label">Mobile-Aduino Communication</span> </a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Location-Based Facility Data</span> </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Cultural Properties facility like museum</span> </a>
+            </li>
+            <li>
+                <a href="healthfacilities"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Health facility for chronic disease</span> </a>
             </li>
             <li>
