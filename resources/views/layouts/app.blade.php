@@ -38,6 +38,14 @@
 
 <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
 
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $.get('/getcities', function(data){
+              $("#top-search").typeahead({ source:data });
+          },'json');
+      });
+  </script>
+
 @section('scripts')
 @show
 

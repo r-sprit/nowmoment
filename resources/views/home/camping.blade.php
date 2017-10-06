@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Health facility in Gyeonggi Province of Kora')
+@section('title', 'Minor page')
 
 @section('content')
   <div class="wrapper wrapper-content animated fadeInRight">
@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                        Health facility in Gyeonggi Province of Kora
+                        Camping in the Gyeonggi Province of Kora
                     </h1>
                     <div id="results"></div>
                     <div class="ibox-content">
@@ -18,12 +18,14 @@
                            class="table table-striped table-bordered table-hover" width="98%">
                         <thead>
                         <tr>
-                            <th>SIGUN_NM</th>
-                            <th>FACLT_NM</th>
-                            <th>FACLT_DIV_NM</th>
-                            <th>REFINE_ROADNM_ADDR</th>
-                            <th>DOCTER_CNT</th>
-                            <th>NURSE_CNT</th>
+                            <th>County</th>
+                            <th>Camping Site Name</th>
+                            <th>Site Section</th>
+                            <th>Location Address</th>
+                            <th>Phone</th>
+                            <th>Sites</th>
+                            <th>Capacity</th>
+                            <th>Updated</th>
                         </tr>
                         </thead>
                     </table>
@@ -52,8 +54,10 @@
                         { "mDataProp": "FACLT_NM" },
                         { "mDataProp": "FACLT_DIV_NM" },
                         { "mDataProp": "REFINE_ROADNM_ADDR" },
-                        { "mDataProp": "DOCTER_CNT" },
-                        { "mDataProp": "NURSE_CNT" }
+                        { "mDataProp": "FACLT_TELNO" },
+                        { "mDataProp": "ROOM_CNT" },
+                        { "mDataProp": "ACEPTNC_POSBL_PSN_CNT" },
+                        { "mDataProp": "DATA_STD_DE" }
                     ],
                     buttons: [
                         {extend: 'copy'},
@@ -76,12 +80,12 @@
 
                 });
             }
-            url = "http://openapi.gg.go.kr/HEALTHENHNCCENTER?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json&pSize=1000";
+            url = "http://openapi.gg.go.kr/CAMPGRD?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json&pSize=1000";
             $.get( url, function( data ) {
                 $( "#results" ).html( data );
                 console.log(data);
-                outdata = data.HEALTHENHNCCENTER[1].row;
-                console.log(data.HEALTHENHNCCENTER[1]);
+                outdata = data.CAMPGRD[1].row;
+                console.log(data.CAMPGRD[1]);
                 createDataTable(outdata);
             }, "json" );
 

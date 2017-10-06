@@ -20,10 +20,29 @@
                 <a href="{{ url('/') }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Location-Based Condition Prediction</span></a>
             </li>
+            <li>
+                <a href="healthfacilities"><i class="fa fa-th-large"></i>
+                    <span class="nav-label"> Health facility for chronic disease</span> </a>
+            </li>
+
+            <li>
+                <a href="campingfacilities"><i class="fa fa-th-large"></i>
+                    <span class="nav-label"> Camping Sites</span> </a>
+            </li>
+            <li>
+                <a href="touristsites"><i class="fa fa-th-large"></i>
+                    <span class="nav-label"> Tourism Sites</span> </a>
+            </li>
+            <li>
+                <a href="bicyclerental"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Bicycle Rental Sites</span> </a>
+            </li>
+            <!--
             <li class="{{ isActiveRoute('minor') }}">
                 <a href="{{ url('/minor') }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Aduino Board Modules</span> </a>
             </li>
+
             <li>
                 <a href="#"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Fine Dust (API)</span> </a>
@@ -36,28 +55,26 @@
                 <a href="#"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Location-Based Facility Data</span> </a>
             </li>
+             -->
             <li>
                 <a href="#"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Cultural Properties facility like museum</span> </a>
             </li>
+
             <li>
-                <a href="healthfacilities"><i class="fa fa-th-large"></i>
-                    <span class="nav-label"> Health facility for chronic disease</span> </a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-th-large"></i>
+                <a href="civildefence"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Security/Safety facility</span> </a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-th-large"></i>
+                <a href="sample"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Location-Based Social News</span> </a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-th-large"></i>
+                <a href="sample"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> SNS keyword based crawling</span> </a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-th-large"></i>
+                <a href="sample"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Social Data Analysis  </span> </a>
             </li>
         </ul>

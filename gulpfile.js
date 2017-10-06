@@ -38,6 +38,7 @@ mix.scripts([
     'resources/assets/js/plugins/fullcalendar/fullcalendar.min.js',
 	'resources/assets/js/plugins/sparkline/jquery.sparkline.min.js',
     'resources/assets/js/plugins/dataTables/datatables.min.js',
+	'resources/assets/js/plugins/typehead/bootstrap3-typeahead.min.js',
 ], 'public/js/app.js', './');
 
 });

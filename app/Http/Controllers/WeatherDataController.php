@@ -14,23 +14,21 @@ use App\Http\Controllers\Controller;
 
 class WeatherDataController extends Controller
 {
-    public function getLatestData() {
-        $sql_expr = "DATE_FORMAT(`RECORD_DATE`, '%Y-%m-%d %H:%i') as RECORD_DATE, 
-                     MAX(WIND) AS WIND, MAX(SOLAR) AS SOLAR, 
-                     MAX(TEMPERATURE) AS TEMPERATURE, MAX(HUMADITY) AS HUMADITY, SENSOR_ID";
-        $live_weather_data = DB::table("LIVE_WEATER_SENSOR_DATA")
+    public function getLatestData($city_id = 1835848) {
+        $sql_expr = "DATE_FORMAT(`record_date`, '%Y-%m-%d %H:%i') as record_date, 
+                     humidity, temperature, pressure, wind_speed";
+        $live_weather_data = DB::table("live_weather_api")
             ->select(DB::raw($sql_expr))
-            ->groupby('RECORD_DATE', 'SENSOR_ID')
-            ->orderBy('ID', 'desc')
-            ->take(61)->get();
+            ->where("city_id", $city_id)
+            ->orderBy('id', 'desc')
+            ->take(24)->get();
 
         $output_coll = collect([
-            "SENSOR_ID" => $live_weather_data->pluck("SENSOR_ID"),
-            "RECORD_DATE" => $live_weather_data->pluck("RECORD_DATE"),
-            "TEMPERATURE" => $live_weather_data->pluck("TEMPERATURE"),
-            "WIND" => $live_weather_data->pluck("WIND"),
-            "HUMADITY" => $live_weather_data->pluck("HUMADITY"),
-            "SOLAR" => $live_weather_data->pluck("SOLAR")
+            "RECORD_DATE" => $live_weather_data->pluck("record_date"),
+            "TEMPERATURE" => $live_weather_data->pluck("temperature"),
+            "WIND" => $live_weather_data->pluck("wind_speed"),
+            "HUMADITY" => $live_weather_data->pluck("humidity"),
+            "SOLAR" => $live_weather_data->pluck("pressure")
         ]);
 
         return Response()->json($output_coll);

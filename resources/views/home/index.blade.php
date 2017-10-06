@@ -11,8 +11,10 @@
                        How are you feeling in current weather?
                         <a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-frown-o" aria-hidden="true"></i></a>
+                        <!--
                         <a href="#"><i class="fa fa-bus" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
+                        -->
                     </h1>
 
 					
@@ -67,7 +69,7 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <span class="label label-danger pull-right">Hourly</span>
-                        <h5>Solar</h5>
+                        <h5>Pressure</h5>
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id="sol_avg">Loading</h1>
@@ -105,7 +107,7 @@
                     <div class="col-lg-3">
                         <div class="ibox">
                             <div class="ibox-content">
-                                <h5>Solar</h5>
+                                <h5>Pressure</h5>
                                 <div id="sparkline4"></div>
                             </div>
                         </div>

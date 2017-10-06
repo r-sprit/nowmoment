@@ -8,9 +8,9 @@
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                        Simple example of second view
+                        Under Construction
                     </h1>
-                    <small>Writen in minor.blade.php file.</small>
+                    <small>THis page is under development</small>
                 </div>
             </div>
         </div>

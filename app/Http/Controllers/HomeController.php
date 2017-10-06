@@ -32,7 +32,29 @@ class HomeController extends Controller
         return view('home/minor');
     }
 
+    public function sample()
+    {
+        return view('home/sample');
+    }
+
     public function healthfacilities() {
         return view('home/healthfacilities');
     }
+
+    public function campingfacilities() {
+        return view('home/camping');
+    }
+
+    public function bicyclerental() {
+        return view('home/bicyclerental');
+    }
+
+    public function civildefencefacilities() {
+        return view('home/civildefence');
+    }
+
+    public function touristsitesInfo() {
+        return view('home/touristsites');
+    }
+
 }
