@@ -57,7 +57,7 @@
             </li>
              -->
             <li>
-                <a href="#"><i class="fa fa-th-large"></i>
+                <a href="localheritage"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Cultural Properties facility like museum</span> </a>
             </li>
 

@@ -25,6 +25,7 @@ Route::get("/campingfacilities", "HomeController@campingfacilities");
 Route::get("/bicyclerental", "HomeController@bicyclerental");
 Route::get("/touristsites", "HomeController@touristsitesInfo");
 Route::get("/civildefence", "HomeController@civildefencefacilities");
+Route::get("/localheritage", "HomeController@localheritagefacilities");
 
 Route::get("/getcities", "UtilitiesController@getcities");
 Auth::routes();

@@ -45,6 +45,10 @@ class HomeController extends Controller
         return view('home/camping');
     }
 
+    public function localheritagefacilities() {
+        return view("home/localheritage");
+    }
+
     public function bicyclerental() {
         return view('home/bicyclerental');
     }
