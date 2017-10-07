@@ -9,15 +9,20 @@
                 <div class="text-center m-t-lg">
                     <h1>
                        How are you feeling in current weather?
+                        <!--
                         <a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-frown-o" aria-hidden="true"></i></a>
-                        <!--
                         <a href="#"><i class="fa fa-bus" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
                         -->
-                    </h1>
 
-					
+                    </h1>
+                    <a href="#"><img src="images/excited.png" height="80" width="80" /></a> &nbsp;
+                    <a href="#"><img src='images/happy.png' height="80" width="80"  /></a> &nbsp;
+                    <a href="#"><img src='images/netural.png' height="80" width="80"  /></a> &nbsp;
+                    <a href="#"><img src="images/so.png" height="80" width="80"  /></a> &nbsp;
+                    <a href="#"><img src="images/sad.png" height="80" width="80"  /></a> &nbsp;
+                    <a href="#"><img src="images/vsad.png" height="80" width="80"  /></a>
                 </div>
             </div>
 
@@ -34,7 +39,7 @@
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id = "tmp_avg">Loading</h1>
-                        <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                        <h3 class="stat-percent font-bold text-info" id="tmp_diff"></h3>
                         <small>10 Hours Average</small>
                     </div>
                 </div>
@@ -47,7 +52,7 @@
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id = "hum_avg">Loading</h1>
-                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                        <h3 class="stat-percent font-bold text-info" id="hum_diff"></h3>
                         <<small>10 Hours Average</small>
                     </div>
                 </div>
@@ -60,7 +65,7 @@
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id="wnd_avg">Loading</h1>
-                        <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                        <h3 class="stat-percent font-bold text-info" id="wnd_diff"></h3>
                         <<small>10 Hours Average</small>
                     </div>
                 </div>
@@ -73,7 +78,7 @@
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id="sol_avg">Loading</h1>
-                        <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
+                        <h3 class="stat-percent font-bold text-info" id="sol_diff"></h3>
                         <small>10 Hours Average</small>
                     </div>
                 </div>
@@ -124,7 +129,7 @@
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Draggable Events</h5>
+                        <h5>Recommended Events</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -159,7 +164,7 @@
             <div class="col-lg-9">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Striped Table </h5>
+                        <h5>Everyday Condition Schedule</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -198,6 +203,7 @@
     <script>
 
         $(document).ready(function() {
+
 
 
 
@@ -265,7 +271,13 @@
                 },
                 height:500,
                 dayRender: function(date, cell) {
-                    cell.append('<span class="p-3"><i class="fa fa-smile-o fa-lg p-3" aria-hidden="true"></i></span>');
+                    var randomNumber = Math.floor(Math.random() * 30);
+                    if ((randomNumber % 2) == 0) {
+                        cell.append('<span class="p-3"><i class="fa fa-smile-o fa-lg p-3" aria-hidden="true"></i></span>');
+                    } else {
+                        cell.append('<span class="p-3"><i class="fa fa-frown-o fa-lg p-3" aria-hidden="true"></i></span>');
+                    }
+
                 },
                 events: '/getevents' /* ,
                 events: [
@@ -361,42 +373,56 @@
                     function update_weather_data() {
                         $.ajax({
                             url: '/liveweather',
+                            data: {'city': $("#top-search").val()},
                             dataType: 'json',
                             success: function (data) {
                                 console.log(data);
                                 json_data = data;
-                                var tmp_arr = Object.values(json_data.TEMPERATURE.reverse());
-                                var hum_arr = Object.values(json_data.HUMADITY.reverse());
-                                var wnd_arr = Object.values(json_data.WIND.reverse());
-                                var sol_arr = Object.values(json_data.SOLAR.reverse());
+                                var tmp_arr = Object.values(json_data.TEMPERATURE);
+                                var hum_arr = Object.values(json_data.HUMADITY);
+                                var wnd_arr = Object.values(json_data.WIND);
+                                var sol_arr = Object.values(json_data.SOLAR);
                                 $("#tmp_avg").html(tmp_arr[0]);
                                 $("#hum_avg").html(hum_arr[0]);
                                 $("#sol_avg").html(sol_arr[0]);
                                 $("#wnd_avg").html(wnd_arr[0]);
                                 $("#last_updated_time").html(json_data.RECORD_DATE[0]);
-                                sparklineCharts(tmp_arr, hum_arr, wnd_arr, sol_arr);
+                                sparklineCharts(tmp_arr.reverse(), hum_arr, wnd_arr.reverse(), sol_arr);
 
-            $.ajax({
-                url: '/liveweather',
-                dataType: 'json',
-                success: function(data) {
-                    console.log(data);
-                    json_data = data;
-                    var tmp_arr = Object.values(json_data.TEMPERATURE);
-                    var hum_arr = Object.values(json_data.HUMADITY);
-                    var wnd_arr = Object.values(json_data.WIND);
-                    var sol_arr = Object.values(json_data.SOLAR);
-                    console.log(tmp_arr);
-                    console.log(Math.max.apply(Math, tmp_arr));
-                    $("#tmp_avg").html(tmp_arr[0]);
-                    $("#hum_avg").html(hum_arr[0]);
-                    $("#sol_avg").html(sol_arr[0]);
-                    $("#wnd_avg").html(wnd_arr[0]);
-                    $("#last_updated_time").html(json_data.RECORD_DATE[0]);
-                    sparklineCharts(tmp_arr, hum_arr, wnd_arr, sol_arr);
+                                var wnd_diff, tmp_diff, hum_diff, sol_diff;
+                                //console.log(tmp_arr);
+                                if (tmp_arr[0] > tmp_arr[10]) {
+                                    tmp_diff = Math.round((tmp_arr[10] / tmp_arr[0]) * 100);
+                                    $("#tmp_diff").html(tmp_diff + '% <i class="fa fa-level-up"></i>');
+                                } else {
+                                    tmp_diff = Math.round((tmp_arr[0] / tmp_arr[10]) * 100);
+                                    $("#tmp_diff").html(tmp_diff + '% <i class="fa fa-level-down"></i>');
+                                }
 
-                }
-            });
+                                if (hum_arr[0] > hum_arr[10]) {
+                                    hum_diff = Math.round((hum_arr[10] / hum_arr[0]) * 100);
+                                    $("#hum_diff").html(hum_diff + '% <i class="fa fa-level-up"></i>');
+                                } else {
+                                    hum_diff = Math.round((hum_arr[0] / hum_arr[10]) * 100);
+                                    $("#hum_diff").html(hum_diff + '% <i class="fa fa-level-down"></i>');
+                                }
+
+                                if (wnd_arr[0] > wnd_arr[10]) {
+                                    wnd_diff = Math.round((wnd_arr[10] / wnd_arr[0]) * 100);
+                                    $("#wnd_diff").html(wnd_diff + '% <i class="fa fa-level-up"></i>');
+                                } else {
+                                    wnd_diff = Math.round((wnd_arr[0] / wnd_arr[10]) * 100);
+                                    $("#wnd_diff").html(wnd_diff + '% <i class="fa fa-level-down"></i>');
+                                }
+
+                                if (sol_arr[0] > sol_arr[10]) {
+                                    sol_diff = Math.round((sol_arr[10] / sol_arr[0]) * 100);
+                                    $("#sol_diff").html(sol_diff + '% <i class="fa fa-level-up"></i>');
+                                } else {
+                                    sol_diff = Math.round((sol_arr[0] / sol_arr[10]) * 100);
+                                    $("#sol_diff").html(sol_diff + '% <i class="fa fa-level-down"></i>');
+                                }
+
 
                             }
 

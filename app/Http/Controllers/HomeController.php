@@ -22,8 +22,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $city_name = "Seoul";
+        if( $request->has("top-search")) {
+            $city_name = $request->get("top-search");
+        }
+
+
+
         return view('home/index');
     }
 

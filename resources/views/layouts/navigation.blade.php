@@ -17,24 +17,24 @@
                 </div>
             </li>
             <li class="{{ isActiveRoute('main') }}">
-                <a href="{{ url('/') }}"><i class="fa fa-th-large"></i>
+                <a href="{{ url('/') }}?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Location-Based Condition Prediction</span></a>
             </li>
             <li>
-                <a href="healthfacilities"><i class="fa fa-th-large"></i>
+                <a href="healthfacilities?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Health facility for chronic disease</span> </a>
             </li>
 
             <li>
-                <a href="campingfacilities"><i class="fa fa-th-large"></i>
+                <a href="campingfacilities?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Camping Sites</span> </a>
             </li>
             <li>
-                <a href="touristsites"><i class="fa fa-th-large"></i>
+                <a href="touristsites?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Tourism Sites</span> </a>
             </li>
             <li>
-                <a href="bicyclerental"><i class="fa fa-th-large"></i>
+                <a href="bicyclerental?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Bicycle Rental Sites</span> </a>
             </li>
             <!--
@@ -57,24 +57,24 @@
             </li>
              -->
             <li>
-                <a href="localheritage"><i class="fa fa-th-large"></i>
+                <a href="localheritage?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label">Cultural Properties facility like museum</span> </a>
             </li>
 
             <li>
-                <a href="civildefence"><i class="fa fa-th-large"></i>
+                <a href="civildefence?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Security/Safety facility</span> </a>
             </li>
             <li>
-                <a href="sample"><i class="fa fa-th-large"></i>
+                <a href="sample?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Location-Based Social News</span> </a>
             </li>
             <li>
-                <a href="sample"><i class="fa fa-th-large"></i>
+                <a href="sample?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> SNS keyword based crawling</span> </a>
             </li>
             <li>
-                <a href="sample"><i class="fa fa-th-large"></i>
+                <a href="sample?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Social Data Analysis  </span> </a>
             </li>
         </ul>

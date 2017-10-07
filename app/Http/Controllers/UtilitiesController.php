@@ -17,7 +17,10 @@ class UtilitiesController extends Controller
 {
     public function getcities() {
         $cities = DB::table("cities")->select("id", "name")->get();
-        return Response()->json($cities);
+        #echo mb_convert_encoding("\u00e2", "UTF-8");
+        return Response()->json($cities)->header(
+            'Content-Type', 'application/json; charset=UTF-8');
+
     }
 
 }

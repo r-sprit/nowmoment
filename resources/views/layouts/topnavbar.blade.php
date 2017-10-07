@@ -2,11 +2,17 @@
     <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" method="post" action="/">
+            <button class=" minimalize-styl-2 btn btn-primary " id="search-updater"
+            ><i class="fa fa-map-marker"></i> </button>
+            <form role="search" class="navbar-form-custom" id="navbar-search-form" method="get" action="/">
                 <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search" />
+
+                    <input type="text" placeholder="Search for something..."
+                           class="form-control" name="top-search" id="top-search" />
+
                 </div>
             </form>
+
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>

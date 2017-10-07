@@ -40,7 +40,44 @@
 
   <script type="text/javascript">
       $(document).ready(function() {
-          $.get('/getcities', function(data){
+
+          $("#search-updater").click(function() {
+              $("#navbar-search-form").submit();
+          });
+
+
+          if ("geolocation" in navigator){ //check geolocation available
+              //try to get user current location using getCurrentPosition() method
+              navigator.geolocation.getCurrentPosition(function(position){
+                  console.log("Found your location \nLat : "+position.coords.latitude+" \nLang :"+ position.coords.longitude);
+              });
+          }else{
+              console.log("Browser doesn't support geolocation!");
+          }
+
+          @if (Request::has("top-search"))
+
+            $("#top-search").val('{{Request::get("top-search")}}');
+          @else
+          $.getJSON('https://ipinfo.io/geo', function(response) {
+              var loc = response.loc.split(',');
+              var coords = {
+                  latitude: loc[0],
+                  longitude: loc[1]
+              };
+              console.log(response.city);
+              $("#top-search").val(response.city);
+
+          });
+          @endif
+
+          $.ajaxSetup({
+              scriptCharset: "utf-8",
+              contentType: "application/json; charset=utf-8"
+          });
+
+          $.getJSON('/getcities', function(data){
+              console.log(data);
               $("#top-search").typeahead({ source:data });
           },'json');
       });
