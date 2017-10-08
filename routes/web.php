@@ -26,6 +26,7 @@ Route::get("/bicyclerental", "HomeController@bicyclerental");
 Route::get("/touristsites", "HomeController@touristsitesInfo");
 Route::get("/civildefence", "HomeController@civildefencefacilities");
 Route::get("/localheritage", "HomeController@localheritagefacilities");
+Route::post("/addusermode", "HomeController@addUserEmotions");
 
 Route::get("/getcities", "UtilitiesController@getcities");
 Auth::routes();

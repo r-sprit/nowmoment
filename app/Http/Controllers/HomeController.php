@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\UserMode;
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -30,8 +34,11 @@ class HomeController extends Controller
         }
 
 
+        $usermode = \App\UserMode::where("user_id", AUth::id())
+            ->orderBy('updated_at', 'desc')->first();
 
-        return view('home/index');
+
+        return view('home/index', ['user_mode' => $usermode->current_mode]);
     }
 
     public function minor()
@@ -66,6 +73,21 @@ class HomeController extends Controller
 
     public function touristsitesInfo() {
         return view('home/touristsites');
+    }
+
+    public function addUserEmotions(Request $request) {
+        date_default_timezone_set("Asia/Seoul");
+
+        $usermode = \App\UserMode::updateOrCreate(
+            ['user_id' => Auth::id(), 'current_mode' => $request->input("current_mode"),
+            'current_time' => date("Y-m-d H:00:00")]
+        );
+
+        $usermode->updated_at = date("Y-m-d H:i:s");
+        $usermode->save(['timestamps' => FALSE]);
+
+        return var_dump($request->all());
+        //return Response()->json($usermode);
     }
 
 }

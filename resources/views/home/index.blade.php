@@ -17,12 +17,12 @@
                     <a href="#"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
                     -->
                     <div class="dark_images">
-                    <a href="#"><img src="images/excited.png" id="emo_excited" height="80" width="80" /></a> &nbsp;
-                    <a href="#"><img src='images/happy.png' id="emo_happy" height="80" width="80"  /></a> &nbsp;
-                    <a href="#"><img src='images/netural.png' id="emo_netural" height="80" width="80"  /></a> &nbsp;
-                    <a href="#"><img src="images/so.png" id="emo_so" height="80" width="80"  /></a> &nbsp;
-                    <a href="#"><img src="images/sad.png" id="emo_sad" height="80" width="80"  /></a> &nbsp;
-                    <a href="#"><img src="images/vsad.png" id="emo_vsad" height="80" width="80"  /></a>
+                    <a href="javascript:AddEmpotion('excited')"><img src="images/excited.png" class="emo_image" id="emo_excited" height="80" width="80" /></a> &nbsp;
+                    <a href="javascript:AddEmpotion('happy')"><img src='images/happy.png'  class="emo_image"  id="emo_happy" height="80" width="80"  /></a> &nbsp;
+                    <a href="javascript:AddEmpotion('netural')"><img src='images/netural.png' class="emo_image"  id="emo_netural" height="80" width="80"  /></a> &nbsp;
+                    <a href="javascript:AddEmpotion('so')"><img src="images/so.png" class="emo_image" id="emo_so" height="80" width="80"  /></a> &nbsp;
+                    <a href="javascript:AddEmpotion('sad')"><img src="images/sad.png" class="emo_image" id="emo_sad" height="80" width="80"  /></a> &nbsp;
+                    <a href="javascript:AddEmpotion('verysad')"><img src="images/vsad.png" class="emo_image" id="emo_vsad" height="80" width="80"  /></a>
                     </div>
                 </div>
             </div>
@@ -217,10 +217,30 @@
     </style>
     <script>
 
+        function AddEmpotion(mode) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '/addusermode',
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded',
+                data: {'_token' : '{{ csrf_token() }}', 'current_mode' : mode },
+                success: function (data) {
+                    $(".emo_image").removeClass("bright_image");
+                    $("#emo_" + mode).addClass("bright_image");
+                }
+            });
+        }
+
+
+
         $(document).ready(function() {
 
 
-            $("#emo_netural").addClass("bright_image");
+            $("#emo_{{$user_mode}}").addClass("bright_image");
 
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',
