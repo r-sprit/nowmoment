@@ -45,7 +45,7 @@
               $("#navbar-search-form").submit();
           });
 
-
+          /*
           if ("geolocation" in navigator){ //check geolocation available
               //try to get user current location using getCurrentPosition() method
               navigator.geolocation.getCurrentPosition(function(position){
@@ -54,7 +54,7 @@
           }else{
               console.log("Browser doesn't support geolocation!");
           }
-
+            */
           @if (Request::has("top-search"))
 
             $("#top-search").val('{{Request::get("top-search")}}');
@@ -65,8 +65,13 @@
                   latitude: loc[0],
                   longitude: loc[1]
               };
-              console.log(response.city);
-              $("#top-search").val(response.city);
+              console.log(response.city.length);
+
+              if (response.city.length == 0) {
+                  $("#top-search").val("Seoul");
+              } else {
+                  $("#top-search").val(response.city);
+              }
 
           });
           @endif

@@ -7,7 +7,7 @@
             <form role="search" class="navbar-form-custom" id="navbar-search-form" method="get" action="/">
                 <div class="form-group">
 
-                    <input type="text" placeholder="Search for something..."
+                    <input type="text" placeholder="Where you are..."
                            class="form-control" name="top-search" id="top-search" />
 
                 </div>

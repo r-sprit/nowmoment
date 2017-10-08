@@ -9,20 +9,21 @@
                 <div class="text-center m-t-lg">
                     <h1>
                        How are you feeling in current weather?
-                        <!--
-                        <a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-frown-o" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-bus" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
-                        -->
-
                     </h1>
-                    <a href="#"><img src="images/excited.png" height="80" width="80" /></a> &nbsp;
-                    <a href="#"><img src='images/happy.png' height="80" width="80"  /></a> &nbsp;
-                    <a href="#"><img src='images/netural.png' height="80" width="80"  /></a> &nbsp;
-                    <a href="#"><img src="images/so.png" height="80" width="80"  /></a> &nbsp;
-                    <a href="#"><img src="images/sad.png" height="80" width="80"  /></a> &nbsp;
-                    <a href="#"><img src="images/vsad.png" height="80" width="80"  /></a>
+                    <!--
+                    <a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-frown-o" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-bus" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
+                    -->
+                    <div class="dark_images">
+                    <a href="#"><img src="images/excited.png" id="emo_excited" height="80" width="80" /></a> &nbsp;
+                    <a href="#"><img src='images/happy.png' id="emo_happy" height="80" width="80"  /></a> &nbsp;
+                    <a href="#"><img src='images/netural.png' id="emo_netural" height="80" width="80"  /></a> &nbsp;
+                    <a href="#"><img src="images/so.png" id="emo_so" height="80" width="80"  /></a> &nbsp;
+                    <a href="#"><img src="images/sad.png" id="emo_sad" height="80" width="80"  /></a> &nbsp;
+                    <a href="#"><img src="images/vsad.png" id="emo_vsad" height="80" width="80"  /></a>
+                    </div>
                 </div>
             </div>
 
@@ -39,7 +40,7 @@
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id = "tmp_avg">Loading</h1>
-                        <h3 class="stat-percent font-bold text-info" id="tmp_diff"></h3>
+                        <h3 class="stat-percent font-bold" id="tmp_diff"></h3>
                         <small>10 Hours Average</small>
                     </div>
                 </div>
@@ -52,7 +53,7 @@
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id = "hum_avg">Loading</h1>
-                        <h3 class="stat-percent font-bold text-info" id="hum_diff"></h3>
+                        <h3 class="stat-percent font-bold" id="hum_diff"></h3>
                         <<small>10 Hours Average</small>
                     </div>
                 </div>
@@ -65,7 +66,7 @@
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id="wnd_avg">Loading</h1>
-                        <h3 class="stat-percent font-bold text-info" id="wnd_diff"></h3>
+                        <h3 class="stat-percent font-bold" id="wnd_diff"></h3>
                         <<small>10 Hours Average</small>
                     </div>
                 </div>
@@ -78,7 +79,7 @@
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins" id="sol_avg">Loading</h1>
-                        <h3 class="stat-percent font-bold text-info" id="sol_diff"></h3>
+                        <h3 class="stat-percent font-bold" id="sol_diff"></h3>
                         <small>10 Hours Average</small>
                     </div>
                 </div>
@@ -194,18 +195,32 @@
 
 @section('scripts')
 
+
+
     <style>
 
         .fc td, .fc th {
             padding: 5px 10px !important;
             vertical-align: top; }
+        .dark_images img {
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+        }
+        .dark_images img:hover {
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: none;
+        }
+        .bright_image {
+            -webkit-filter: none !important; /* Safari 6.0 - 9.0 */
+            filter: none !important;
+        }
     </style>
     <script>
 
         $(document).ready(function() {
 
 
-
+            $("#emo_netural").addClass("bright_image");
 
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',
@@ -330,11 +345,12 @@
 			
 			
 			var sparklineCharts = function(tmp_arr, hum_arr, wnd_arr, sol_arr){
+
                  $("#sparkline1").sparkline(tmp_arr, {
                      type: 'line',
                      width: '100%',
                      height: '60',
-                     lineColor: '#1ab394',
+                     lineColor: tmp_arr[23] > tmp_arr[14] ? "#ed5565" : "#1ab394",
                      fillColor: "#ffffff"
                  });
 
@@ -342,7 +358,7 @@
                      type: 'line',
                      width: '100%',
                      height: '60',
-                     lineColor: '#1ab394',
+                     lineColor: hum_arr[23] > hum_arr[14] ? "#ed5565" : "#1ab394",
                      fillColor: "#ffffff"
                  });
 
@@ -350,7 +366,7 @@
                      type: 'line',
                      width: '100%',
                      height: '60',
-                     lineColor: '#ed5565',
+                     lineColor: wnd_arr[23] > wnd_arr[14] ? "#ed5565" : "#1ab394",
                      fillColor: "#ffffff"
                  });
 
@@ -358,10 +374,11 @@
                      type: 'line',
                      width: '100%',
                      height: '60',
-                     lineColor: '#ed5565',
+                     lineColor: sol_arr[23] > sol_arr[14] ? "#ed5565" : "#1ab394",
                      fillColor: "#ffffff"
                  });
 			};
+
 				 
 				 var sparkResize;
 
@@ -387,43 +404,38 @@
                                 $("#sol_avg").html(sol_arr[0]);
                                 $("#wnd_avg").html(wnd_arr[0]);
                                 $("#last_updated_time").html(json_data.RECORD_DATE[0]);
-                                sparklineCharts(tmp_arr.reverse(), hum_arr, wnd_arr.reverse(), sol_arr);
 
-                                var wnd_diff, tmp_diff, hum_diff, sol_diff;
+                                console.log(tmp_arr);
+                                var wnd_diff = Math.round((wnd_arr[0] - wnd_arr[10]) / wnd_arr[10] * 100);
+                                var tmp_diff = Math.round((tmp_arr[0] - tmp_arr[10]) / tmp_arr[10] * 100);
+                                var hum_diff = Math.round((hum_arr[0] - hum_arr[10]) / hum_arr[10] * 100);
+                                var sol_diff = Math.round((sol_arr[0] - sol_arr[10]) / sol_arr[10] * 100);
                                 //console.log(tmp_arr);
-                                if (tmp_arr[0] > tmp_arr[10]) {
-                                    tmp_diff = Math.round((tmp_arr[10] / tmp_arr[0]) * 100);
-                                    $("#tmp_diff").html(tmp_diff + '% <i class="fa fa-level-up"></i>');
+                                if (tmp_diff >= 0) {
+                                    $("#tmp_diff").html(tmp_diff + '% <i class="fa fa-level-up"></i>').addClass("text-danger");
                                 } else {
-                                    tmp_diff = Math.round((tmp_arr[0] / tmp_arr[10]) * 100);
-                                    $("#tmp_diff").html(tmp_diff + '% <i class="fa fa-level-down"></i>');
+                                    $("#tmp_diff").html(Math.abs(tmp_diff) + '% <i class="fa fa-level-down"></i>').addClass("text-info");
                                 }
 
-                                if (hum_arr[0] > hum_arr[10]) {
-                                    hum_diff = Math.round((hum_arr[10] / hum_arr[0]) * 100);
-                                    $("#hum_diff").html(hum_diff + '% <i class="fa fa-level-up"></i>');
+                                if (hum_diff >=0 ) {
+                                    $("#hum_diff").html(hum_diff + '% <i class="fa fa-level-up"></i>').addClass("text-danger");
                                 } else {
-                                    hum_diff = Math.round((hum_arr[0] / hum_arr[10]) * 100);
-                                    $("#hum_diff").html(hum_diff + '% <i class="fa fa-level-down"></i>');
+                                    $("#hum_diff").html(Math.abs(hum_diff) + '% <i class="fa fa-level-down"></i>').addClass("text-info");
                                 }
 
-                                if (wnd_arr[0] > wnd_arr[10]) {
-                                    wnd_diff = Math.round((wnd_arr[10] / wnd_arr[0]) * 100);
-                                    $("#wnd_diff").html(wnd_diff + '% <i class="fa fa-level-up"></i>');
+                                if (wnd_diff >= 0) {
+                                    $("#wnd_diff").html(wnd_diff + '% <i class="fa fa-level-up"></i>').addClass("text-danger");
                                 } else {
-                                    wnd_diff = Math.round((wnd_arr[0] / wnd_arr[10]) * 100);
-                                    $("#wnd_diff").html(wnd_diff + '% <i class="fa fa-level-down"></i>');
+                                    $("#wnd_diff").html(Math.abs(wnd_diff) + '% <i class="fa fa-level-down"></i>').addClass("text-info");
                                 }
 
-                                if (sol_arr[0] > sol_arr[10]) {
-                                    sol_diff = Math.round((sol_arr[10] / sol_arr[0]) * 100);
-                                    $("#sol_diff").html(sol_diff + '% <i class="fa fa-level-up"></i>');
+                                if (sol_diff >= 0) {
+                                    $("#sol_diff").html(sol_diff + '% <i class="fa fa-level-up"></i>').addClass("text-danger");
                                 } else {
-                                    sol_diff = Math.round((sol_arr[0] / sol_arr[10]) * 100);
-                                    $("#sol_diff").html(sol_diff + '% <i class="fa fa-level-down"></i>');
+                                    $("#sol_diff").html(Math.abs(sol_diff) + '% <i class="fa fa-level-down"></i>').addClass("text-info");
                                 }
 
-
+                                sparklineCharts(tmp_arr.reverse(), hum_arr.reverse(), wnd_arr.reverse(), sol_arr.reverse());
                             }
 
                         });
