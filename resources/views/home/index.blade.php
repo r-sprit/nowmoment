@@ -35,7 +35,7 @@
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <span class="label label-success pull-right">Hourly</span>
+                        <span class="label label-primary pull-right">Hourly</span>
                         <h5>Temperature</h5>
                     </div>
                     <div class="ibox-content">
@@ -48,7 +48,7 @@
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <span class="label label-info pull-right">Hourly</span>
+                        <span class="label label-primary pull-right">Hourly</span>
                         <h5>Humadity</h5>
                     </div>
                     <div class="ibox-content">
@@ -74,7 +74,7 @@
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <span class="label label-danger pull-right">Hourly</span>
+                        <span class="label label-primary pull-right">Hourly</span>
                         <h5>Pressure</h5>
                     </div>
                     <div class="ibox-content">
@@ -276,45 +276,60 @@
             var m = date.getMonth();
             var y = date.getFullYear();
 
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'prev,next today'
-                    //right: 'month,agendaWeek,agendaDay'
-                },
-                editable: true,
-                droppable: true, // this allows things to be dropped onto the calendar
-                drop: function( date ) {
-                    input_data = {
-                        event_date: moment(date).format('YYYY-MM-DD'),
-                        event_text: $(this).text(),
-                        _token: "{{ csrf_token() }}"
-                    };
+            $.get("predictmode", function( mode_data ) {
 
-                    $.ajax({
-                        url: '/addevent',
-                        type: 'get',
-                        data: input_data,
-                        success: function (data) {
-                            alert(data);
+                var monthNames = [
+                    "None", "excited", "happy",
+                    "netural", "so", "sad", "vsad"
+                ];
+
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'prev,next today'
+                        //right: 'month,agendaWeek,agendaDay'
+                    },
+                    editable: true,
+                    droppable: true, // this allows things to be dropped onto the calendar
+                    drop: function( date ) {
+                        input_data = {
+                            event_date: moment(date).format('YYYY-MM-DD'),
+                            event_text: $(this).text(),
+                            _token: "{{ csrf_token() }}"
+                        };
+
+                        $.ajax({
+                            url: '/addevent',
+                            type: 'get',
+                            data: input_data,
+                            success: function (data) {
+                                alert(data);
+                            }
+                        });
+
+                        // is the "remove after drop" checkbox checked?
+
+                    },
+                    height:500,
+                    dayRender: function(date, cell) {
+                        var today_date = moment(date).format('YYYYMMDD');
+
+                        var today_mod_data = mode_data[today_date];
+
+                        if (typeof today_mod_data == 'undefined') {
+                            return;
                         }
-                    });
 
-                    // is the "remove after drop" checkbox checked?
+                        var file_path = "images/" + monthNames[today_mod_data] + ".png";
 
-                },
-                height:500,
-                dayRender: function(date, cell) {
-                    var randomNumber = Math.floor(Math.random() * 30);
-                    if ((randomNumber % 2) == 0) {
-                        cell.append('<span class="p-3"><i class="fa fa-smile-o fa-lg p-3" aria-hidden="true"></i></span>');
-                    } else {
-                        cell.append('<span class="p-3"><i class="fa fa-frown-o fa-lg p-3" aria-hidden="true"></i></span>');
-                    }
+                        var randomNumber = Math.floor(Math.random() * 30);
 
-                },
-                events: '/getevents' /* ,
+                        cell.append('<span class="p-3"><img srcset="' + file_path + '" width="20" height="20" /> </span>');
+
+
+                    },
+                    events: '/getevents' /* ,
                 events: [
                     {
                         title: 'All Day Event',
@@ -361,7 +376,51 @@
                         url: 'http://google.com/'
                     }
                 ] */
+                });
             });
+                /*
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'prev,next today'
+                    //right: 'month,agendaWeek,agendaDay'
+                },
+                editable: true,
+                droppable: true, // this allows things to be dropped onto the calendar
+                drop: function( date ) {
+                    input_data = {
+                        event_date: moment(date).format('YYYY-MM-DD'),
+                        event_text: $(this).text(),
+                        _token: "{{ csrf_token() }}"
+                    };
+
+                    $.ajax({
+                        url: '/addevent',
+                        type: 'get',
+                        data: input_data,
+                        success: function (data) {
+                            alert(data);
+                        }
+                    });
+
+                    // is the "remove after drop" checkbox checked?
+
+                },
+                height:500,
+                dayRender: function(date, cell) {
+                    console.log(date);
+                    var randomNumber = Math.floor(Math.random() * 30);
+                    if ((randomNumber % 2) == 0) {
+                        cell.append('<span class="p-3"><img srcset="images/netural.png" width="20" height="20" /> </span>');
+                    } else {
+                        cell.append('<span class="p-3"><img srcset="images/happy.png" width="20" height="20" /> </span>');
+                    }
+
+                },
+
+            });
+        */
 			
 			
 			var sparklineCharts = function(tmp_arr, hum_arr, wnd_arr, sol_arr){
@@ -419,6 +478,7 @@
                                 var hum_arr = Object.values(json_data.HUMADITY);
                                 var wnd_arr = Object.values(json_data.WIND);
                                 var sol_arr = Object.values(json_data.SOLAR);
+                                var psr_arr = Object.values(json_data.SPRESSURE);
                                 $("#tmp_avg").html(tmp_arr[0]);
                                 $("#hum_avg").html(hum_arr[0]);
                                 $("#sol_avg").html(sol_arr[0]);
@@ -429,8 +489,8 @@
                                 var wnd_diff = Math.round((wnd_arr[0] - wnd_arr[10]) / wnd_arr[10] * 100);
                                 var tmp_diff = Math.round((tmp_arr[0] - tmp_arr[10]) / tmp_arr[10] * 100);
                                 var hum_diff = Math.round((hum_arr[0] - hum_arr[10]) / hum_arr[10] * 100);
-                                var sol_diff = Math.round((sol_arr[0] - sol_arr[10]) / sol_arr[10] * 100);
-                                //console.log(tmp_arr);
+                                var sol_diff = Math.round((psr_arr[0] - psr_arr[10]) / psr_arr[10] * 100);
+
                                 if (tmp_diff >= 0) {
                                     $("#tmp_diff").html(tmp_diff + '% <i class="fa fa-level-up"></i>').addClass("text-danger");
                                 } else {

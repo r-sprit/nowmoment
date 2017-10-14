@@ -23,7 +23,8 @@ class WeatherDataController extends Controller
 
 
         $sql_expr = "DATE_FORMAT(`record_date`, '%Y-%m-%d %H:%i') as record_date, 
-                     humidity, temperature - 273.15 AS temperature, pressure, wind_speed";
+                     humidity, temperature - 273.15 AS temperature, 
+                     ROUND(pressure) AS pressure, pressure - 1000 AS spressure, wind_speed";
         $live_weather_data = DB::table("live_weather_api")
             ->select(DB::raw($sql_expr))
             ->where("city_id", $cities_data->id)
@@ -35,7 +36,8 @@ class WeatherDataController extends Controller
             "TEMPERATURE" => $live_weather_data->pluck("temperature"),
             "WIND" => $live_weather_data->pluck("wind_speed"),
             "HUMADITY" => $live_weather_data->pluck("humidity"),
-            "SOLAR" => $live_weather_data->pluck("pressure")
+            "SOLAR" => $live_weather_data->pluck("pressure"),
+            "SPRESSURE" => $live_weather_data->pluck("spressure"),
         ]);
 
         return Response()->json($output_coll);

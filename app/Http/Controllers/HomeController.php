@@ -7,6 +7,7 @@ use App\UserMode;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -37,6 +38,9 @@ class HomeController extends Controller
         $usermode = \App\UserMode::where("user_id", AUth::id())
             ->orderBy('updated_at', 'desc')->first();
 
+        if (is_null($usermode)) {
+            return view('home/index', ['user_mode' => "netural"]);
+        }
 
         return view('home/index', ['user_mode' => $usermode->current_mode]);
     }
@@ -88,6 +92,35 @@ class HomeController extends Controller
 
         return var_dump($request->all());
         //return Response()->json($usermode);
+    }
+
+    public function predict_mode() {
+
+        $sql_expr = "DATE_FORMAT(`forcost_date`, '%Y%m%d') as forcost_date, 
+                     AVG(humidity) AS humidity, 
+                     AVG(temperature_max) AS temperature, 
+                     sky, AVG(pressure) AS pressure, 
+                     AVG(rain) AS rain,
+                     AVG(wind_speed) AS wind_speed";
+        $live_weather_data = DB::table("live_weather_forcast")
+            ->select(DB::raw($sql_expr))
+            ->groupBy("forcost_date", "city_id")
+            ->where("city_id", "1835848")
+            ->orderBy('forcost_date', 'desc')
+            ->take(60)->get();
+        #echo $live_weather_data;
+        $command = escapeshellcmd('/home/shoaib/pythonnotebooks/prediction_result.py');
+        $cmd_output = shell_exec($command . " " . $live_weather_data . " 2>&1");
+        $cmd_output = str_replace(["[", "]", "\n"], "", $cmd_output);
+        $cmd_output = explode(" ", $cmd_output);
+
+
+
+        $forcast_date = $live_weather_data->pluck("forcost_date")->toArray();
+        $output_coll = array_combine(
+            $forcast_date,
+            $cmd_output);
+        return Response()->json($output_coll);
     }
 
 }
