@@ -272,6 +272,7 @@
             /* initialize the calendar
              -----------------------------------------------------------------*/
             var date = new Date();
+            var today_date_string = moment(date).format('YYYYMMDD');
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear();
@@ -313,13 +314,19 @@
                     },
                     height:500,
                     dayRender: function(date, cell) {
-                        var today_date = moment(date).format('YYYYMMDD');
+                        var date_string = moment(date).format('YYYYMMDD');
 
-                        var today_mod_data = mode_data[today_date];
+                        var today_mod_data = mode_data[date_string];
+
+                        if (date_string == today_date_string) {
+                            cell.append('<span class="p-3"><img srcset="images/{{$user_mode}}.png" width="20" height="20" /> </span>');
+                            return;
+                        }
 
                         if (typeof today_mod_data == 'undefined') {
                             return;
                         }
+
 
                         var file_path = "images/" + monthNames[today_mod_data] + ".png";
 

@@ -10,14 +10,26 @@
                     <h1>
                         Tourist Sites Information in Gyeonggi Province of Kora
                     </h1>
-                    <div id="results"></div>
-                    <div class="ibox-content">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#my_map_googlemap">Map</a></li>
+                        <li><a data-toggle="tab" href="#my_dt_datatable">Tabular</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="my_map_googlemap" class="tab-pane fade in active">
+                            <div id="main_map" style="width: 100%; height: 400px;">
+                            </div>
+                        </div>
+                        <div id="my_dt_datatable" class="tab-pane fade">
+                            <div class="ibox-content">
 
                     <div class="table-responsive text-left">
                     <table id="dataTables-example"
                            class="table table-striped table-bordered table-hover" width="98%">
                         <thead>
                         <tr>
+                            <th>Distance</th>
                             <th>County</th>
                             <th>Site Name</th>
                             <th>Course Time</th>
@@ -31,6 +43,9 @@
                     </table>
                     </div>
                     </div>
+                    </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -41,6 +56,9 @@
 
         $(document).ready(function() {
 
+            var lat = 37.56826;
+            var lng = 126.977829;
+
             function createDataTable(outdata) {
                 console.log(outdata);
                 $('#dataTables-example').DataTable({
@@ -50,6 +68,7 @@
                     dom: '<"html5buttons"B>lTfgitp',
                     aaData : outdata,
                     aoColumns : [
+                        { "mDataProp": "DIST"},
                         { "mDataProp": "SIGUN_NM" },
                         { "mDataProp": "STRET_NM_INFO" },
                         { "mDataProp": "TOT_REQURE_TM_INFO" },
@@ -59,6 +78,10 @@
                         { "mDataProp": "COURS_INFO" },
                         { "mDataProp": "DATA_STD_DE" }
                     ],
+                    "columnDefs": [
+                        { "bVisible": false, "targets": 0 }
+                    ],
+                    "order": [[ 0, "asc" ]],
                     buttons: [
                         {extend: 'copy'},
                         {extend: 'csv'},
@@ -80,17 +103,57 @@
 
                 });
             }
+
             url = "http://openapi.gg.go.kr/STRETTURSMINFO?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json&pSize=1000";
+
             $.get( url, function( data ) {
                 $( "#results" ).html( data );
                 console.log(data);
-                outdata = data.STRETTURSMINFO[1].row;
-                console.log(data.STRETTURSMINFO[1]);
+                var outdata = data.STRETTURSMINFO[1].row;
+
+                for(i = 0; i<outdata.length; i++) {
+                    outdata[i].DIST = computeDistance(lat, lng,
+                        outdata[i].REFINE_WGS84_LAT, outdata[i].REFINE_WGS84_LOGT);
+                }
                 createDataTable(outdata);
-            }, "json" );
+            }, "jsonp" );
 
-
-            //
         });
     </script>
+
+    <script>
+      function initMap() {
+
+          var lat = 37.56826;
+          var lng = 126.977829;
+
+          var uluru = {lat: lat, lng: lng};
+          var map = new google.maps.Map(document.getElementById('main_map'), {
+              zoom: 10,
+              center: uluru
+          });
+
+          url = "http://openapi.gg.go.kr/STRETTURSMINFO?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json&pSize=1000";
+
+          $.get( url, function( data ) {
+              $( "#results" ).html( data );
+              console.log(data);
+              var outdata = data.STRETTURSMINFO[1].row;
+
+              for(i = 0; i<outdata.length; i++) {
+                  var marker = new google.maps.Marker({
+                      position: {lat: outdata[i].REFINE_WGS84_LAT,
+                          lng: outdata[i].REFINE_WGS84_LOGT},
+                      map: map
+                  });
+              }
+          }, "jsonp" );
+
+
+      }
+  </script>
+
+      <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQYL16LQAkpvxj1d_GkMhzCA-1KOAF37s&callback=initMap">
+      </script>
 @endsection

@@ -17,9 +17,15 @@ class WeatherDataController extends Controller
 {
     public function getLatestData(Request $request, $city_id = 1835848) {
 
+
+        $city_name = $request->get("city", "Seoul");
+        if (strlen($city_name < 2)) {
+            $city_name = "Seoul";
+        }
         $cities_data = DB::table("cities")
             ->select("id")
-            ->where("name", $request->get("city"))->first();
+            ->where("name", $city_name)->first();
+
 
 
         $sql_expr = "DATE_FORMAT(`record_date`, '%Y-%m-%d %H:%i') as record_date, 
