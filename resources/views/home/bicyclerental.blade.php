@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                        Bicycle Rental Site Status in Gyeonggi Province of Kora
+                        Bicycle Rental Site Status in Gyeonggi Province of Korea
                     </h1>
 
                     <ul class="nav nav-tabs">
@@ -119,10 +119,24 @@
     </script>
 
     <script>
+
+
+
         function initMap() {
 
             var lat = 37.56826;
             var lng = 126.977829;
+
+            function addInfoWindow(marker, message) {
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: message
+                });
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infoWindow.open(map, marker);
+                });
+            }
 
             var uluru = {lat: lat, lng: lng};
             var map = new google.maps.Map(document.getElementById('main_map'), {
@@ -143,6 +157,8 @@
                             lng: outdata[i].REFINE_WGS84_LOGT},
                         map: map
                     });
+
+                    addInfoWindow(marker, outdata[i].BICYCL_LEND_PLC_NM_INST_NM);
                 }
             }, "jsonp" );
 

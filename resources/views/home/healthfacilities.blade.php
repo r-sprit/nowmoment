@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                        Health facility in Gyeonggi Province of Kora
+                        Health facility in Gyeonggi Province of Korea
                     </h1>
 
                     <ul class="nav nav-tabs">
@@ -116,6 +116,18 @@
     <script>
         function initMap() {
 
+
+            function addInfoWindow(marker, message) {
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: message
+                });
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infoWindow.open(map, marker);
+                });
+            }
+
             var lat = 37.56826;
             var lng = 126.977829;
 
@@ -138,6 +150,7 @@
                             lng: outdata[i].REFINE_WGS84_LOGT},
                         map: map
                     });
+                    addInfoWindow(marker, outdata[i].FACLT_NM);
                 }
             }, "jsonp" );
 
