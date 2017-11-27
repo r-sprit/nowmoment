@@ -73,8 +73,8 @@
                     ]
 
                 });
-            }
-            url = "http://openapi.gg.go.kr/CAMPGRD?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json";
+            }S
+            url = "http://openapi.gg.go.kr/CAMPGRD?key=93c8f67b82c9453e92a50dc5d3280ee3&type=json";
             $.get( url, function( data ) {
                 $( "#results" ).html( data );
                 outdata = data.CAMPGRD[1].row;
