@@ -432,6 +432,7 @@
 			
 			var sparklineCharts = function(tmp_arr, hum_arr, wnd_arr, sol_arr){
 
+			    console.log(tmp_arr);
                  $("#sparkline1").sparkline(tmp_arr, {
                      type: 'line',
                      width: '100%',
@@ -444,7 +445,7 @@
                      type: 'line',
                      width: '100%',
                      height: '60',
-                     lineColor: hum_arr[23] > hum_arr[14] ? "#ed5565" : "#1ab394",
+                     lineColor: hum_arr[22] > hum_arr[14] ? "#ed5565" : "#1ab394",
                      fillColor: "#ffffff"
                  });
 
@@ -452,7 +453,7 @@
                      type: 'line',
                      width: '100%',
                      height: '60',
-                     lineColor: wnd_arr[23] > wnd_arr[14] ? "#ed5565" : "#1ab394",
+                     lineColor: wnd_arr[22] > wnd_arr[14] ? "#ed5565" : "#1ab394",
                      fillColor: "#ffffff"
                  });
 
@@ -460,7 +461,7 @@
                      type: 'line',
                      width: '100%',
                      height: '60',
-                     lineColor: sol_arr[23] > sol_arr[14] ? "#ed5565" : "#1ab394",
+                     lineColor: sol_arr[22] > sol_arr[14] ? "#ed5565" : "#1ab394",
                      fillColor: "#ffffff"
                  });
 			};

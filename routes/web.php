@@ -28,6 +28,8 @@ Route::get("/civildefence", "HomeController@civildefencefacilities");
 Route::get("/localheritage", "HomeController@localheritagefacilities");
 Route::post("/addusermode", "HomeController@addUserEmotions");
 Route::get("/predictmode", "HomeController@predict_mode");
+Route::any("/getNaverNews", "HomeController@getNaverNews");
+
 
 Route::get("/getcities", "UtilitiesController@getcities");
 Auth::routes();

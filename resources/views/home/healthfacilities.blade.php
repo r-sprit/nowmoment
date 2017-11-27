@@ -96,7 +96,7 @@
 
                 });
             }
-            url = "http://openapi.gg.go.kr/HEALTHENHNCCENTER?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json&pSize=1000";
+            url = "http://openapi.gg.go.kr/HEALTHENHNCCENTER?key=93c8f67b82c9453e92a50dc5d3280ee3&type=json&pSize=1000";
             $.get( url, function( data ) {
                 $( "#results" ).html( data );
                 console.log(data);
@@ -137,7 +137,7 @@
                 center: uluru
             });
 
-            url = "http://openapi.gg.go.kr/HEALTHENHNCCENTER?key=050f8fa7263748229e91ddf9dfe5f0e5&type=json&pSize=1000";
+            url = "http://openapi.gg.go.kr/HEALTHENHNCCENTER?key=93c8f67b82c9453e92a50dc5d3280ee3&type=json&pSize=1000";
 
             $.get( url, function( data ) {
                 $( "#results" ).html( data );
@@ -159,6 +159,6 @@
     </script>
 
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQYL16LQAkpvxj1d_GkMhzCA-1KOAF37s&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDHKMP4M6pcQ86PfG-T58HWITNXlGnCjA&callback=initMap">
     </script>
 @endsection

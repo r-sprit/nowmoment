@@ -66,7 +66,7 @@
                     <span class="nav-label"> Security/Safety facility</span> </a>
             </li>
             <li>
-                <a href="sample?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
+                <a href="getNaverNews?{{ Request::getQueryString() }}"><i class="fa fa-th-large"></i>
                     <span class="nav-label"> Location-Based Social News</span> </a>
             </li>
             <li>
